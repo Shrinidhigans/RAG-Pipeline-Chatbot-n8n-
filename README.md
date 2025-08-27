@@ -38,13 +38,6 @@ This ensures:
 - **Recursive Character Text Splitter** – splits text into chunks  
 - **AI Agent (n8n)** – orchestrates retrieval + response  
 
----
-
-## ⚙️ Workflow Overview
-
----
-
-## ⚙️ Workflow Overview
 
 ### 🔹 Document Ingestion Pipeline
 - Trigger: Google Drive file creation  
@@ -60,11 +53,6 @@ This ensures:
 - **Google Gemini** generates a response  
 - Return final answer to user
 
-  
- ## 🖼️ Architecture
-![Pipeline](./docs/architecture.png)
-
----
 
 ## 🌟 Features
 - Automated ingestion from **Google Drive**  
