@@ -1,69 +1,102 @@
 # RAG-Pipeline-Chatbot-n8n-
+# RAG Pipeline & Chatbot using n8n + Google Gemini
 
-RAG Pipeline & Chatbot using n8n + Google Gemini
+This repository contains my implementation of a **Retrieval-Augmented Generation (RAG) pipeline and chatbot** using [n8n](https://n8n.io/).  
+The project connects **Google Drive, Pinecone, and Google Gemini API** to build an interactive chatbot that fetches and answers queries from documents in real time.
 
-This repository contains my implementation of a Retrieval-Augmented Generation (RAG) pipeline and chatbot using n8n
-. The project connects Google Drive, Pinecone, and Google Gemini API to build an interactive chatbot that can fetch and answer queries from documents in real-time.
+---
 
-⚡ What is n8n?
+## ⚡ What is n8n?
 
-n8n
- is an open-source workflow automation tool that lets you connect apps, APIs, and databases through visual workflows. It’s highly flexible, developer-friendly, and supports advanced automation without writing complex boilerplate code.
+[n8n](https://n8n.io/) is an **open-source workflow automation tool** that lets you connect apps, APIs, and databases through visual workflows.  
+It’s highly flexible, developer-friendly, and makes building data pipelines easier without needing heavy coding.
 
-📚 What is RAG (Retrieval-Augmented Generation)?
+---
 
-RAG is an AI architecture that enhances LLMs by retrieving context from a vector database before generating a response.
+## 📚 What is RAG?
 
-Store data as embeddings in a vector database (Pinecone).
+**Retrieval-Augmented Generation (RAG)** enhances LLMs by retrieving context before generating an answer:
 
-Retrieve relevant documents when a user asks a question.
-
-Send both query + retrieved docs to an LLM (Google Gemini) for a contextual, accurate answer.
+1. **Store** documents as embeddings in a vector database (Pinecone).  
+2. **Retrieve** relevant chunks when a user asks a question.  
+3. **Generate** context-aware answers using Google Gemini.  
 
 This ensures:
-✅ Reliable responses
-✅ Fresh knowledge beyond the LLM’s training cutoff
-✅ Domain-specific intelligence
+- ✅ More accurate answers  
+- ✅ Knowledge beyond the LLM’s training cutoff  
+- ✅ Domain-specific intelligence  
 
-🛠️ Tech Stack
+---
 
-n8n (self-hosted via Docker) – Workflow automation engine
+## 🛠️ Tech Stack
 
-Google Drive API – Document source
+- **n8n (Docker self-hosted)** – workflow engine  
+- **Google Drive API** – source for documents  
+- **Pinecone** – vector database for embeddings  
+- **Google Gemini API** – embeddings + chat model  
+- **OpenRouter API** – optional chat model integration  
+- **Recursive Character Text Splitter** – splits text into chunks  
+- **AI Agent (n8n)** – orchestrates retrieval + response  
 
-Pinecone – Vector database for embeddings
+---
 
-Google Gemini API – Embeddings + Chat model
+## ⚙️ Workflow Overview
 
-OpenRouter API – Optional chat model integration
+---
 
-Recursive Character Text Splitter – Splits text into chunks
+## ⚙️ Workflow Overview
 
-AI Agent (n8n) – Orchestrates retrieval + response generation
+### 🔹 Document Ingestion Pipeline
+- Trigger: Google Drive file creation  
+- Download document  
+- Load + split text into chunks  
+- Generate embeddings with **Google Gemini**  
+- Store vectors in **Pinecone**  
 
-⚙️ Workflow Overview
-🔹 Document Ingestion Pipeline
+### 🔹 Chatbot Pipeline
+- Trigger: chat message  
+- Retrieve relevant chunks from Pinecone  
+- AI Agent combines query + context  
+- **Google Gemini** generates a response  
+- Return final answer to user
 
-Google Drive Trigger → Detect new/updated files.
+  
+ ## 🖼️ Architecture
+![Pipeline](./docs/architecture.png)
 
-Download File → Pull document into n8n.
+---
 
-Default Data Loader → Read and process document.
+## 🌟 Features
+- Automated ingestion from **Google Drive**  
+- Embeddings with **Google Gemini**  
+- Vector search using **Pinecone**  
+- Interactive chatbot with memory  
+- Modular and extensible workflows  
 
-Recursive Text Splitter → Break into smaller chunks.
+---
 
-Embeddings (Google Gemini) → Convert chunks into vectors.
+## 🔮 Future Enhancements
+- Web-based chatbot frontend  
+- Multi-user context handling  
+- More data sources (Slack, Notion, Email, etc.)  
 
-Store in Pinecone → Save embeddings for retrieval.
+---
 
-🔹 Chatbot Pipeline
+## 💡 Reflections
+This project was an **amazing learning experience**.  
 
-Chat Message Trigger → User asks a question.
+I got hands-on with:  
+- Running **n8n locally via Docker**  
+- Designing a **RAG pipeline end to end**  
+- Using **Google Gemini API** for embeddings + chat  
+- Integrating **Pinecone** into a live workflow  
 
-Retrieve from Pinecone → Find most relevant chunks.
+It helped me understand how **automation + vector search + LLMs** can be combined into practical, scalable systems.  
+I really enjoyed building this—it was both challenging and rewarding.  
 
-AI Agent (n8n) → Combines user query + context.
+---
 
-Google Gemini LLM → Generates contextual response.
+## 👨‍💻 Author
+Built with ❤️ using **n8n + Google Gemini API + Pinecone**  
+by *Shrinidhi*
 
-Return Answer → Sends reply back to chat interface.
