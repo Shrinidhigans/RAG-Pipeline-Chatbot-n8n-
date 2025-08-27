@@ -1,17 +1,12 @@
-# RAG-Pipeline-Chatbot-n8n-
 # RAG Pipeline & Chatbot using n8n + Google Gemini
 
 This repository contains my implementation of a **Retrieval-Augmented Generation (RAG) pipeline and chatbot** using [n8n](https://n8n.io/).  
 The project connects **Google Drive, Pinecone, and Google Gemini API** to build an interactive chatbot that fetches and answers queries from documents in real time.
 
----
-
 ## ⚡ What is n8n?
 
 [n8n](https://n8n.io/) is an **open-source workflow automation tool** that lets you connect apps, APIs, and databases through visual workflows.  
 It’s highly flexible, developer-friendly, and makes building data pipelines easier without needing heavy coding.
-
----
 
 ## 📚 What is RAG?
 
@@ -26,8 +21,6 @@ This ensures:
 - ✅ Knowledge beyond the LLM’s training cutoff  
 - ✅ Domain-specific intelligence  
 
----
-
 ## 🛠️ Tech Stack
 
 - **n8n (Docker self-hosted)** – workflow engine  
@@ -37,7 +30,6 @@ This ensures:
 - **OpenRouter API** – optional chat model integration  
 - **Recursive Character Text Splitter** – splits text into chunks  
 - **AI Agent (n8n)** – orchestrates retrieval + response  
-
 
 ### 🔹 Document Ingestion Pipeline
 - Trigger: Google Drive file creation  
@@ -53,7 +45,6 @@ This ensures:
 - **Google Gemini** generates a response  
 - Return final answer to user
 
-
 ## 🌟 Features
 - Automated ingestion from **Google Drive**  
 - Embeddings with **Google Gemini**  
@@ -61,14 +52,10 @@ This ensures:
 - Interactive chatbot with memory  
 - Modular and extensible workflows  
 
----
-
 ## 🔮 Future Enhancements
 - Web-based chatbot frontend  
 - Multi-user context handling  
 - More data sources (Slack, Notion, Email, etc.)  
-
----
 
 ## 💡 Reflections
 This project was an **amazing learning experience**.  
@@ -81,8 +68,6 @@ I got hands-on with:
 
 It helped me understand how **automation + vector search + LLMs** can be combined into practical, scalable systems.  
 I really enjoyed building this—it was both challenging and rewarding.  
-
----
 
 ## 👨‍💻 Author
 Built with ❤️ using **n8n + Google Gemini API + Pinecone**  
